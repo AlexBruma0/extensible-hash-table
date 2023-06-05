@@ -6,9 +6,11 @@
 //
 
 #include <iostream>
+#include "Bucket.hpp"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    Bucket bucket;     
+    bucket.addKey(4);
+
     return 0;
 }
