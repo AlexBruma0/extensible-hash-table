@@ -22,6 +22,7 @@ struct Key {
 class Bucket {
   private:
     vector<Key> keys;
+    int localDepth;
     
   public:
 
@@ -30,6 +31,7 @@ class Bucket {
     void addKey(int value);
     bool removeKey(int value);
     vector<Key> getKeys();
+    int getLocalDepth();
     
 };
 

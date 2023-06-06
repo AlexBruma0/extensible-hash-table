@@ -26,19 +26,26 @@ ExtensibleHashTable::ExtensibleHashTable(int numOfKeys){
 }
 
 void printKeys(vector<Key> keys){
+    cout << "[";
     for(int j = 0; j < keys.size(); j++){
-        cout << keys[j].value << ' ' << keys[j].taken;
-        cout << "\n";
+
+        if(keys[j].taken)
+            cout << keys[j].value << ",";
+        else
+            cout  << ",-";
     }
+    cout << "] ";
+
 }
 
 
 void ExtensibleHashTable::print(){
     for(int i=0; i< buckets.size(); i++){
-        cout << "bucket " << i << "\n";
+        cout << i << ":" << " --> ";
         vector<Key> keys = (*buckets[i]).getKeys();
         printKeys(keys);
-        
+        cout << "(" << (*buckets[i]).getLocalDepth() << ")";
+        cout << "\n";
         
     }
 }

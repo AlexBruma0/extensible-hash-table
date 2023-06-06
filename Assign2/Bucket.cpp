@@ -9,12 +9,14 @@
 #include <iostream>
 
 Bucket::Bucket(){
+    localDepth = 1;
     for(int i = 0; i < 4; i++){
         keys.push_back({0,false});
     }
 }
 
 Bucket::Bucket(int numOfKeys){
+    localDepth = 1;
     for(int i = 0; i < numOfKeys; i++){
         keys.push_back({0,false});
     }
@@ -46,4 +48,7 @@ bool Bucket::removeKey(int value) {
 }
 vector<Key> Bucket::getKeys(){
     return keys;
+}
+int Bucket::getLocalDepth(){
+    return localDepth;
 }
