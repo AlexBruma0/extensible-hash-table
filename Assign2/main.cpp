@@ -7,10 +7,14 @@
 
 #include <iostream>
 #include "Bucket.hpp"
+#include "ExtensibleHashTable.hpp"
 
 int main(int argc, const char * argv[]) {
-    Bucket bucket;     
-    bucket.addKey(4);
 
+    ExtensibleHashTable extensibleHashTable;
+    extensibleHashTable.print();
+//    for( auto i = extensibleHashTable.buckets.begin(); i != extensibleHashTable.buckets.end(); ++i){
+//        cout << *i;
+//    }
     return 0;
 }

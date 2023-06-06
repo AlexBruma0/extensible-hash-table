@@ -9,5 +9,23 @@
 #define ExtensibleHashTable_hpp
 
 #include <stdio.h>
+#include "Bucket.hpp"
+#include <vector>
+using namespace std;
+
+
+class ExtensibleHashTable {
+
+public:
+    vector<Bucket *> buckets;
+    ExtensibleHashTable();
+    ExtensibleHashTable(int numOfKeys);
+//    bool find(int);
+//    void insert(int);
+//    bool remove(int);
+      void print();
+    
+    
+};
 
 #endif /* ExtensibleHashTable_hpp */

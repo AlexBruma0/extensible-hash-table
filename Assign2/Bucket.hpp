@@ -10,21 +10,27 @@
 
 #include <stdio.h>
 #include <string>
+#include <vector>
 using namespace std;
-const int bucketSize = 4;
 
-struct key {
+
+struct Key {
     int value;
-    bool taken = false;
+    bool taken;
 };
 
 class Bucket {
   private:
-    key keys[bucketSize];
+    vector<Key> keys;
     
   public:
+
+    Bucket();
+    Bucket(int numOfKeys);
     void addKey(int value);
     void removeKey(int value);
+    vector<Key> getKeys();
+    
 };
 
 #endif /* Bucket_hpp */
