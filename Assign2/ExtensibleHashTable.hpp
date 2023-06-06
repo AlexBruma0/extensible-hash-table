@@ -17,13 +17,14 @@ using namespace std;
 class ExtensibleHashTable {
 
 public:
+    int globalDepth;
     vector<Bucket *> buckets;
     ExtensibleHashTable();
     ExtensibleHashTable(int numOfKeys);
-//    bool find(int);
-//    void insert(int);
-//    bool remove(int);
-      void print();
+//    bool find(int value);
+    void insert(int value);
+//    bool remove(int value);
+    void print();
     
     
 };

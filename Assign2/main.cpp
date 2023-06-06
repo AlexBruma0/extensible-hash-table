@@ -12,9 +12,8 @@
 int main(int argc, const char * argv[]) {
 
     ExtensibleHashTable extensibleHashTable;
+    extensibleHashTable.insert(5);
     extensibleHashTable.print();
-//    for( auto i = extensibleHashTable.buckets.begin(); i != extensibleHashTable.buckets.end(); ++i){
-//        cout << *i;
-//    }
+
     return 0;
 }
