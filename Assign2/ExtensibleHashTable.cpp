@@ -56,4 +56,10 @@ void ExtensibleHashTable::insert(int value){
     
 }
 
+bool ExtensibleHashTable::remove(int value){
+    int bucketNumber = getBucketNumber(value, globalDepth);
+    bool successful = (*buckets[bucketNumber]).removeKey(value);
+    return successful;
+}
+
 

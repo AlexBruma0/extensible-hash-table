@@ -32,13 +32,16 @@ void Bucket::addKey(int value) {
     }    
 }
 
-void Bucket::removeKey(int value) {
-    
+bool Bucket::removeKey(int value) {
+    bool successful = false;
     for(int i = 0; i < keys.size(); i++){
         if(keys[i].value == value){
             keys[i].taken = false;
+            successful = true;
         }
+        
     }
+    return successful;
     
 }
 vector<Key> Bucket::getKeys(){

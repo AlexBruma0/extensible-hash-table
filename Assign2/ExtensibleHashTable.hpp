@@ -23,7 +23,7 @@ public:
     ExtensibleHashTable(int numOfKeys);
 //    bool find(int value);
     void insert(int value);
-//    bool remove(int value);
+    bool remove(int value);
     void print();
     
     

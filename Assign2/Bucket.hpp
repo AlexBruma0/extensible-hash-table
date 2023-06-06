@@ -28,7 +28,7 @@ class Bucket {
     Bucket();
     Bucket(int numOfKeys);
     void addKey(int value);
-    void removeKey(int value);
+    bool removeKey(int value);
     vector<Key> getKeys();
     
 };

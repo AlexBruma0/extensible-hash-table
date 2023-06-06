@@ -14,6 +14,8 @@ int main(int argc, const char * argv[]) {
     ExtensibleHashTable extensibleHashTable;
     extensibleHashTable.insert(5);
     extensibleHashTable.print();
+    extensibleHashTable.remove(5);
+    extensibleHashTable.print();
 
     return 0;
 }
