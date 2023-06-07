@@ -31,6 +31,10 @@ int main(int argc, const char * argv[]) {
     extensibleHashTable.insert(92);
     extensibleHashTable.print();
     cout << "----------------------------------------\n" ;
+    cout << extensibleHashTable.find(3) << "\n";
+    cout << extensibleHashTable.find(8) << "\n";
+    cout << extensibleHashTable.find(-1) << "\n";
+    
    // extensibleHashTable.remove(5);
 
 

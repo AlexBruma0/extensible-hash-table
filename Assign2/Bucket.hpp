@@ -30,9 +30,10 @@ class Bucket {
     Bucket(int numOfKeys);
     void addKey(int value);
     bool removeKey(int value);
+    bool find(int value);
     vector<Key> getKeys();
     int getLocalDepth();
-   // ~Bucket();
+   
     
 };
 

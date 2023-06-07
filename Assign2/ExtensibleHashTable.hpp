@@ -21,7 +21,7 @@ public:
     vector<Bucket *> buckets;
     ExtensibleHashTable();
     ExtensibleHashTable(int numOfKeys);
-//    bool find(int value);
+    bool find(int value);
     void insert(int value);
     bool remove(int value);
     void print();

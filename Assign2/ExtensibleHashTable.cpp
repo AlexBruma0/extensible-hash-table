@@ -74,3 +74,11 @@ ExtensibleHashTable::~ExtensibleHashTable(){
         delete buckets[i];
 }
 
+bool ExtensibleHashTable::find(int value){
+    int bucketNumber = getBucketNumber(value, globalDepth);
+    if((*buckets[bucketNumber]).find(value))
+        return true;
+    else
+        return false;
+}
+

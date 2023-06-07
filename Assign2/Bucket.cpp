@@ -55,3 +55,15 @@ int Bucket::getLocalDepth(){
     return localDepth;
 }
 
+bool Bucket::find(int value){
+    if(value < 0)
+        return false;
+    bool successful = false;
+    for(int i = 0; i < keys.size(); i++){
+        if(keys[i].value == value && keys[i].taken == true){
+            successful = true;
+        }
+        
+    }
+    return successful;
+}
