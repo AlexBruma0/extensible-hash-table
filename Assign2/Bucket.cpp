@@ -10,13 +10,15 @@
 
 Bucket::Bucket(){
     localDepth = 1;
-    for(int i = 0; i < 4; i++){
+    bucketSize = 4;
+    for(int i = 0; i < bucketSize; i++){
         keys.push_back({0,false});
     }
 }
 
 Bucket::Bucket(int numOfKeys){
     localDepth = 1;
+    bucketSize = numOfKeys;
     for(int i = 0; i < numOfKeys; i++){
         keys.push_back({0,false});
     }
@@ -52,3 +54,9 @@ vector<Key> Bucket::getKeys(){
 int Bucket::getLocalDepth(){
     return localDepth;
 }
+
+//Bucket::~Bucket(){
+//    for(int i = 0; i < bucketSize; i++){
+//        delete [] keys[i];
+//    }
+//}

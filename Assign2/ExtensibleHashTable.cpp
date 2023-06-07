@@ -41,7 +41,7 @@ void printKeys(vector<Key> keys){
 
 void ExtensibleHashTable::print(){
     for(int i=0; i< buckets.size(); i++){
-        cout << i << ":" << " --> ";
+        cout << i << ": "<<buckets[i] << " --> ";
         vector<Key> keys = (*buckets[i]).getKeys();
         printKeys(keys);
         cout << "(" << (*buckets[i]).getLocalDepth() << ")";
@@ -69,4 +69,9 @@ bool ExtensibleHashTable::remove(int value){
     return successful;
 }
 
+ExtensibleHashTable::~ExtensibleHashTable(){
+    for( int i = 0; i < (1 << globalDepth); i++){
+        delete buckets[i];
+    }
+}
 

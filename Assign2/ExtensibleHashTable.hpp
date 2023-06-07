@@ -25,7 +25,12 @@ public:
     void insert(int value);
     bool remove(int value);
     void print();
-    
+    ~ExtensibleHashTable();
+    void operator=(const ExtensibleHashTable& extensibleHashTable)
+    {
+        globalDepth = extensibleHashTable.globalDepth;
+        buckets = extensibleHashTable.buckets;
+    }
     
 };
 

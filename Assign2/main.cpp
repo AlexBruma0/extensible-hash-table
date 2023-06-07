@@ -13,12 +13,24 @@ int main(int argc, const char * argv[]) {
 
     ExtensibleHashTable extensibleHashTable;
     extensibleHashTable.insert(5);
+    extensibleHashTable.print();
+    cout << "----------------------------------------\n" ;
+    
     extensibleHashTable.insert(4);
+    extensibleHashTable.print();
+    cout << "----------------------------------------\n" ;
     extensibleHashTable.insert(3);
+    extensibleHashTable.print();
+    cout << "----------------------------------------\n" ;
     extensibleHashTable.insert(2);
+    extensibleHashTable.print();
+    cout << "----------------------------------------\n" ;
     extensibleHashTable.insert(1);
+    extensibleHashTable.print();
+    cout << "----------------------------------------\n" ;
     extensibleHashTable.insert(92);
     extensibleHashTable.print();
+    cout << "----------------------------------------\n" ;
    // extensibleHashTable.remove(5);
 
 

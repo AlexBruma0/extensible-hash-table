@@ -25,13 +25,14 @@ class Bucket {
     int localDepth;
     
   public:
-
+    int bucketSize;
     Bucket();
     Bucket(int numOfKeys);
     void addKey(int value);
     bool removeKey(int value);
     vector<Key> getKeys();
     int getLocalDepth();
+   // ~Bucket();
     
 };
 
