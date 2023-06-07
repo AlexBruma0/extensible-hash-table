@@ -55,8 +55,3 @@ int Bucket::getLocalDepth(){
     return localDepth;
 }
 
-//Bucket::~Bucket(){
-//    for(int i = 0; i < bucketSize; i++){
-//        delete [] keys[i];
-//    }
-//}

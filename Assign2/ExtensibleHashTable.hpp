@@ -31,7 +31,10 @@ public:
         globalDepth = extensibleHashTable.globalDepth;
         buckets = extensibleHashTable.buckets;
     }
-    
+    ExtensibleHashTable(ExtensibleHashTable& extensibleHashTable){
+        globalDepth = extensibleHashTable.globalDepth;
+        buckets = extensibleHashTable.buckets;
+    }
 };
 
 #endif /* ExtensibleHashTable_hpp */

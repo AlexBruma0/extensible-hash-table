@@ -51,9 +51,9 @@ void ExtensibleHashTable::print(){
 }
 int getBucketNumber(int value, int globalDepth){
     int sum = 0;
-    for(int i = 0; i < globalDepth; i++){
+    for(int i = 0; i < globalDepth; i++)
         sum += (1 << i)*((value >> i) % 2);
-    }
+    
     return sum;
 }
 
@@ -70,8 +70,7 @@ bool ExtensibleHashTable::remove(int value){
 }
 
 ExtensibleHashTable::~ExtensibleHashTable(){
-    for( int i = 0; i < (1 << globalDepth); i++){
+    for( int i = 0; i < (1 << globalDepth); i++)
         delete buckets[i];
-    }
 }
 
