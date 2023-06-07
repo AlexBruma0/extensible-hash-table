@@ -25,15 +25,16 @@ Bucket::Bucket(int numOfKeys){
 }
 
 
-void Bucket::addKey(int value) {
-    
+bool Bucket::addKey(int value) {
+
     for(int i = 0; i < keys.size(); i++){
         if(keys[i].taken == false){
             keys[i].value = value;
             keys[i].taken = true;
-            break;
+            return true;
         }
-    }    
+    }
+    return false;
 }
 
 bool Bucket::removeKey(int value) {

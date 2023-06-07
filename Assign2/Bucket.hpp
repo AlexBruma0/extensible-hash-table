@@ -21,14 +21,16 @@ struct Key {
 
 class Bucket {
   private:
-    vector<Key> keys;
-    int localDepth;
+
+ 
     
   public:
+    vector<Key> keys;
+    int localDepth;
     int bucketSize;
     Bucket();
     Bucket(int numOfKeys);
-    void addKey(int value);
+    bool addKey(int value);
     bool removeKey(int value);
     bool find(int value);
     vector<Key> getKeys();
