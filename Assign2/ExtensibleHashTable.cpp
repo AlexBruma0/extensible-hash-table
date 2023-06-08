@@ -11,6 +11,8 @@
 #include "Bucket.hpp"
 #include <iostream>
 
+
+
 ExtensibleHashTable::ExtensibleHashTable(){
     globalDepth = 1;
     for(int i = 0; i<2; i++){
@@ -123,10 +125,26 @@ void ExtensibleHashTable::bucketFull(Bucket * bucketPtr, int value){
         insertNewBucket(bucketPtr, value);
     }
 }
+bool ExtensibleHashTable::sameValueError(int value, Bucket * bucket){
+    int bucketSize =(*bucket).bucketSize;
+    for(int i = 0; i < bucketSize; i++){
+        if(value != (*bucket).keys[i].value)
+            return false;
+    }
+    return true;
+}
 
 void ExtensibleHashTable::insert(int value){
+    
     int bucketNumber = getBucketNumber(value, globalDepth);
     Bucket * bucketPtr = buckets[bucketNumber];
+    
+    if (sameValueError(value, bucketPtr)){
+        std::runtime_error e = std::runtime_error("inserting too many duplicate keys");
+        cout << "Exception: " << e.what() << "\n";
+        return;
+    }
+    
     if ((*bucketPtr).addKey(value)){
         return;
     }
@@ -156,4 +174,5 @@ bool ExtensibleHashTable::find(int value){
     else
         return false;
 }
+
 

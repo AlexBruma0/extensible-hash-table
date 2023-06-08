@@ -45,6 +45,7 @@ public:
     void bucketFull(Bucket * bucket, int value);
     void doubleDirSize(Bucket * bucket, int value);
     bool bucketIsUnique(Bucket * bucketPtr, int i  );
+    bool sameValueError(int value, Bucket * bucket);
     
 };
 
