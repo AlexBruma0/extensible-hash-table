@@ -20,9 +20,6 @@ struct Key {
 };
 
 class Bucket {
-  private:
-
- 
     
   public:
     vector<Key> keys;
@@ -36,7 +33,6 @@ class Bucket {
     vector<Key> getKeys();
     int getLocalDepth();
    
-    
 };
 
 #endif /* Bucket_hpp */

@@ -24,7 +24,6 @@ Bucket::Bucket(int numOfKeys){
     }
 }
 
-
 bool Bucket::addKey(int value) {
 
     for(int i = 0; i < keys.size(); i++){
@@ -44,14 +43,14 @@ bool Bucket::removeKey(int value) {
             keys[i].taken = false;
             successful = true;
         }
-        
     }
     return successful;
-    
 }
+
 vector<Key> Bucket::getKeys(){
     return keys;
 }
+
 int Bucket::getLocalDepth(){
     return localDepth;
 }
@@ -64,7 +63,10 @@ bool Bucket::find(int value){
         if(keys[i].value == value && keys[i].taken == true){
             successful = true;
         }
-        
     }
     return successful;
+}
+
+void Bucket::reorganizeKeys(){
+    
 }

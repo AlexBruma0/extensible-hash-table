@@ -38,12 +38,10 @@ void printKeys(vector<Key> keys){
     for(int j = 0; j < keys.size(); j++){
         if(j != 0)
             cout  << ",";
-
         if(keys[j].taken)
             cout << keys[j].value;
         else
             cout << "-";
-            
     }
     cout << "] ";
 
@@ -87,7 +85,7 @@ void ExtensibleHashTable::redistributeValues(Bucket * oldBucketPtr, Bucket * new
             (*oldBucketPtr).keys[i].taken = false;
         }
     }
-    (*newBucketPtr).localDepth++;
+    (*newBucketPtr).localDepth = (*oldBucketPtr).localDepth;
 }
 
 void ExtensibleHashTable::doubleDirSize(Bucket * bucketPtr,int value){
@@ -106,11 +104,12 @@ void ExtensibleHashTable::doubleDirSize(Bucket * bucketPtr,int value){
     
 }
 void ExtensibleHashTable::insertNewBucket(Bucket * bucketPtr, int value){
+    int localDepth = (*bucketPtr).localDepth;
+    int oldBucketIndex = getBucketNumber(value, localDepth);
+    int newBucketIndex = oldBucketIndex + (1 << (localDepth));
+    
     (*bucketPtr).localDepth++;
-    int oldBucketNumber = getBucketNumber(value, globalDepth);
-    int newBucketIndex = oldBucketNumber + (1 << (globalDepth - 1));
     Bucket * newBucketPtr = new Bucket((*bucketPtr).bucketSize);
-    (*newBucketPtr).localDepth = (*bucketPtr).localDepth - 1;
     buckets[newBucketIndex] = newBucketPtr;
     redistributeValues(bucketPtr, newBucketPtr);
 }
