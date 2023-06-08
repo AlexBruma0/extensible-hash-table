@@ -39,7 +39,7 @@ bool Bucket::addKey(int value) {
 bool Bucket::removeKey(int value) {
     bool successful = false;
     for(int i = 0; i < keys.size(); i++){
-        if(keys[i].value == value){
+        if(keys[i].value == value && keys[i].taken == true){
             keys[i].taken = false;
             successful = true;
         }
@@ -68,5 +68,11 @@ bool Bucket::find(int value){
 }
 
 void Bucket::reorganizeKeys(){
-    
+    for(int j = 0; j < bucketSize; j++){
+        for(int i = 0; i < bucketSize - 1; i++){
+            if(keys[i].taken == false && keys[i + 1].taken == true)
+                std::swap(keys[i], keys[i+1]);
+        }
+    }
+
 }

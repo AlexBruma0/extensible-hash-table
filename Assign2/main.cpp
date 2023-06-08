@@ -26,6 +26,18 @@ int main(int argc, const char * argv[]) {
         cout << "----------------------------------------\n" ;
 
     }
+    
+    for(int i = 0; i < 40; i++){
+        //int random = array[i];
+        int random = rand() % 100;
+        bool success = extensibleHashTable.remove(random);
+        cout << "removing: " << random << "\n";
+        if(!success)
+            cout << "key not found \n";
+        extensibleHashTable.print();
+        cout << "----------------------------------------\n" ;
+
+    }
 
     return 0;
 }

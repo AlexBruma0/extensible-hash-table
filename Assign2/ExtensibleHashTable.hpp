@@ -42,10 +42,13 @@ public:
     //helper methods
     void redistributeValues(Bucket * oldBucketPtr, Bucket * newBucketPtr);
     void insertNewBucket(Bucket * bucketPtr, int value);
-    void bucketFull(Bucket * bucket, int value);
+    void handleBucketFull(Bucket * bucket, int value);
     void doubleDirSize(Bucket * bucket, int value);
     bool bucketIsUnique(Bucket * bucketPtr, int i  );
     bool sameValueError(int value, Bucket * bucket);
+    int findFirstIndex(Bucket * bucketPtr);
+    int getUniqueBucketNumber(int value);
+    void reorganizeBuckets();
     
 };
 

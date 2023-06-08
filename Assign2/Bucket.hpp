@@ -32,7 +32,7 @@ class Bucket {
     bool find(int value);
     vector<Key> getKeys();
     int getLocalDepth();
-   
+    void reorganizeKeys();
 };
 
 #endif /* Bucket_hpp */
