@@ -103,18 +103,25 @@ void ExtensibleHashTable::doubleDirSize(Bucket * bucketPtr,int value){
     redistributeValues(bucketPtr, buckets[newBucketNumber]);
     
 }
-void ExtensibleHashTable::insertNewBucket(Bucket * bucketPtr, int value){
-    int localDepth = (*bucketPtr).localDepth;
+void ExtensibleHashTable::fixPointers(Bucket * newBucketPtr ,Bucket * oldBucketPtr, int newBucketIndex){
+    int indexTofix = newBucketIndex + (1 << (globalDepth -1));
+    if(buckets[indexTofix] == oldBucketPtr){
+        buckets[indexTofix] = newBucketPtr;
+    }
+}
+void ExtensibleHashTable::insertNewBucket(Bucket * oldBucketPtr, int value){
+    int localDepth = (*oldBucketPtr).localDepth;
     int oldBucketIndex = getBucketNumber(value, localDepth);
     int newBucketIndex = oldBucketIndex + (1 << (localDepth));
     
-    (*bucketPtr).localDepth++;
-    Bucket * newBucketPtr = new Bucket((*bucketPtr).bucketSize);
+    (*oldBucketPtr).localDepth++;
+    Bucket * newBucketPtr = new Bucket((*oldBucketPtr).bucketSize);
     buckets[newBucketIndex] = newBucketPtr;
-    redistributeValues(bucketPtr, newBucketPtr);
+    redistributeValues(oldBucketPtr, newBucketPtr);
+    fixPointers(newBucketPtr,oldBucketPtr, newBucketIndex);
 }
 
-void ExtensibleHashTable::handleBucketFull(Bucket * bucketPtr, int value){
+void ExtensibleHashTable::bucketFull(Bucket * bucketPtr, int value){
     int localDepth = (*bucketPtr).getLocalDepth();
     if(localDepth == globalDepth){
         doubleDirSize(bucketPtr,value);
@@ -148,35 +155,19 @@ void ExtensibleHashTable::insert(int value){
         return;
     }
     else{
-        handleBucketFull(bucketPtr,value);
+        bucketFull(bucketPtr,value);
         insert(value);
         reorganizeBuckets();
     }
 }
 
-int ExtensibleHashTable::getUniqueBucketNumber(int value){
-    int bucketNumber = getBucketNumber(value, globalDepth);
-    int bucketIndex = findFirstIndex(buckets[bucketNumber]);
-    int depth = (*buckets[bucketNumber]).localDepth;
-    
-    for(int i = 1; i < globalDepth; i++){
-        if(getBucketNumber(bucketIndex, depth) != getBucketNumber(value, depth)){
-            bucketIndex = bucketIndex + (1 << i);
-            depth = (*buckets[bucketIndex]).localDepth;
-        }else{
-            bucketNumber = bucketIndex;
-            break;
-        }
-    }
-    return bucketNumber;
-}
-
 bool ExtensibleHashTable::remove(int value){
-    int bucketNumber = getUniqueBucketNumber(value);
+    int bucketNumber = getBucketNumber(value, globalDepth);
     bool successful = (*buckets[bucketNumber]).removeKey(value);
     if(successful)
         reorganizeBuckets();
     return successful;
+
 }
 
 ExtensibleHashTable::~ExtensibleHashTable(){
@@ -185,23 +176,14 @@ ExtensibleHashTable::~ExtensibleHashTable(){
             delete buckets[i];
         }
 }
-int ExtensibleHashTable::findFirstIndex(Bucket * bucketPtr){
-    for(int i = 0; i < buckets.size(); i ++){
-        if (bucketPtr == buckets[i])
-            return i;
-    }
-    return -1;
-}
 
 bool ExtensibleHashTable::find(int value){
-    int bucketNumber = getUniqueBucketNumber(value);
-
+    int bucketNumber = getBucketNumber(value, globalDepth);
     if((*buckets[bucketNumber]).find(value))
         return true;
     else
         return false;
 }
-
 void  ExtensibleHashTable::reorganizeBuckets(){
     for(int i = 0; i < buckets.size(); i++){
         (*buckets[i]).reorganizeKeys();

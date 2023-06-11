@@ -26,6 +26,7 @@ int main(int argc, const char * argv[]) {
         cout << "----------------------------------------\n" ;
 
     }
+    cout << "000000000000000000000000000000000000000000000000000000000000000000\n";
     for(int i = 0; i < 40; i++){
         //int random = array[i];
         int random = rand() % 100;
@@ -39,7 +40,7 @@ int main(int argc, const char * argv[]) {
         cout << "----------------------------------------\n" ;
 
     }
-    
+    cout << "000000000000000000000000000000000000000000000000000000000000000000\n";
     for(int i = 0; i < 40; i++){
         //int random = array[i];
         int random = rand() % 100;
