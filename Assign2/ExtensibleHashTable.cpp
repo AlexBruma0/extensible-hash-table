@@ -146,8 +146,7 @@ void ExtensibleHashTable::insert(int value){
     Bucket * bucketPtr = buckets[bucketNumber];
     
     if (sameValueError(value, bucketPtr)){
-        std::runtime_error e = std::runtime_error("inserting too many duplicate keys");
-        cout << "Exception: " << e.what() << "\n";
+        throw std::runtime_error("inserting too many duplicate keys");
         return;
     }
     
